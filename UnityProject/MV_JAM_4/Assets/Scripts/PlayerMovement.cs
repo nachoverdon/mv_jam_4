@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
+//[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed = .2f;
+    public float speed = 0.2f;
     private bool canMove = true;
     public Vector4 bounds;
 
@@ -33,23 +34,48 @@ public class PlayerMovement : MonoBehaviour {
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 
+        //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        //rb.velocity = new Vector2(0f, 0f);
+
+        Vector3 pos = transform.position;
+        float x = pos.x;
+        float y = pos.y;
+
         if (up)
-            transform.Translate(new Vector2(0f, speed));
+        {
+            y += speed;
+        }
         else if (down)
-            transform.Translate(new Vector2(0f, -speed));
+        {
+            y -= speed;
+        }
 
         if (left)
-            transform.Translate(new Vector2(-speed, 0f));
+        {
+            x -= speed;
+        }
         else if (right)
-            transform.Translate(new Vector2(speed, 0f));
+        {
+            x += speed;
+        }
+
+        transform.position = new Vector3(x, y, pos.z);
+
     }
 
     void CheckCollisionBounds(Collision2D col)
     {
         if (col.gameObject.tag == "Bounds")
         {
-            canMove = false;
+            //canMove = false;
         }
+    }
+
+    void OnTriggerEnter()
+    {
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        Debug.Log("test");
     }
 
     void OnCollisionEnter2D(Collision2D col)

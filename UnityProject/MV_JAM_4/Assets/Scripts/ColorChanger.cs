@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class SunColor : MonoBehaviour {
+public class ColorChanger : MonoBehaviour {
 
     public float hue = 0f;
     public float saturation = 1f;
