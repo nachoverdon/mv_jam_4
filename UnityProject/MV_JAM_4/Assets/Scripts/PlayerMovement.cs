@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float speed = 0.2f;
+    public Vector2 bounds;
     private bool canMove = true;
-    public Vector4 bounds;
 
     // Use this for initialization
     void Start () {
@@ -39,9 +39,10 @@ public class PlayerMovement : MonoBehaviour {
         //rb.velocity = new Vector2(0f, 0f);
 
         Vector3 pos = transform.position;
+        Vector3 newPos;
         float x = pos.x;
         float y = pos.y;
-
+ 
         if (up)
         {
             y += speed;
@@ -60,32 +61,70 @@ public class PlayerMovement : MonoBehaviour {
             x += speed;
         }
 
-        transform.position = new Vector3(x, y, pos.z);
+        newPos = new Vector3(x, y, pos.z);
+
+        // X axis
+        if (newPos.x <= -bounds.x)
+        {
+            newPos = new Vector3(-bounds.x, newPos.y, newPos.z);
+        }
+        else if (newPos.x >= bounds.x)
+        {
+            newPos = new Vector3(bounds.x, newPos.y, newPos.z);
+        }
+
+        // Y axis
+        if (newPos.y <= -bounds.y)
+        {
+            newPos = new Vector3(newPos.x, -bounds.y, newPos.z);
+        }
+        else if (newPos.y >= bounds.y)
+        {
+            newPos = new Vector3(newPos.x, bounds.y, newPos.z);
+        }
+
+        transform.position = newPos;
 
     }
 
-    void CheckCollisionBounds(Collision2D col)
+    void CheckCollisionBounds()
     {
-        if (col.gameObject.tag == "Bounds")
+        SpriteRenderer spr = GetComponent<SpriteRenderer>();
+        Vector2 spriteSize = new Vector2(spr.sprite.rect.width, spr.sprite.rect.height);
+        Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        Vector3 pos = cam.WorldToScreenPoint(transform.position);
+
+        if (pos.x - spriteSize.x / 2 < 0)
         {
-            //canMove = false;
+            Debug.Log("left");
+            transform.position = cam.ScreenToWorldPoint(new Vector3(spriteSize.x / 2 + 2, pos.y, pos.z));
+            Debug.Log(transform.position.x);
+
         }
     }
 
-    void OnTriggerEnter()
-    {
-        BoxCollider2D col = GetComponent<BoxCollider2D>();
-        Debug.Log("test");
-    }
+    //void OnTriggerStay2D()
+    //{
+    //    CheckCollisionBounds();
+    //}
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.collider is BoxCollider2D) Debug.Log("this: Box");
-        if (col.otherCollider is BoxCollider2D) Debug.Log("other: Box");
-        if (col.collider is CapsuleCollider2D) Debug.Log("other: Capsule");
-        if (col.otherCollider is CapsuleCollider2D) Debug.Log("other: Capsule");
-        //Debug.Log();
-        //Debug.Log(col.otherCollider is BoxCollider2D);
-        CheckCollisionBounds(col);
-    }
+    //void OnTriggerEnter2D()
+    //{
+    //    CheckCollisionBounds();
+    //}
+    //void OnTriggerExit2D()
+    //{
+    //    CheckCollisionBounds();
+    //}
+
+    //void OnCollisionEnter2D(Collision2D col)
+    //{
+    //    if (col.collider is BoxCollider2D) Debug.Log("this: Box");
+    //    if (col.otherCollider is BoxCollider2D) Debug.Log("other: Box");
+    //    if (col.collider is CapsuleCollider2D) Debug.Log("other: Capsule");
+    //    if (col.otherCollider is CapsuleCollider2D) Debug.Log("other: Capsule");
+    //    //Debug.Log();
+    //    //Debug.Log(col.otherCollider is BoxCollider2D);
+    //    CheckCollisionBounds(col);
+    //}
 }
