@@ -29,10 +29,13 @@ public class PlayerMovement : MonoBehaviour {
             return;
         }
 
+        float horizontal = Input.GetAxis("Horizontal");
         bool up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
         bool down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
         bool left = Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A);
         bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, -horizontal * 15f));
 
         //Rigidbody2D rb = GetComponent<Rigidbody2D>();
 

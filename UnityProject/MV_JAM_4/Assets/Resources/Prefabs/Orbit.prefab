@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 58330992530173358}
   - component: {fileID: 96959580468189214}
   - component: {fileID: 114686390583824664}
+  - component: {fileID: 114727872545293406}
+  - component: {fileID: 114265336666541432}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -189,6 +191,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114265336666541432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269362278039898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a25c2fbaa3c974685ff104c0b143c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkSpeed: 0.0035
 --- !u!114 &114686390583824664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +216,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hue: 0
   saturation: 0.5
+  value: 1
+--- !u!114 &114727872545293406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269362278039898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5288f891701736e4c914e372d1b841cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hue: 0
+  saturation: 0.4
   value: 1
 --- !u!114 &114811192721387030
 MonoBehaviour:
@@ -218,7 +246,7 @@ MonoBehaviour:
   axis: {x: 0, y: 0, z: 1}
   radius: 11
   radiusSpeed: 10
-  translationSpeed: 100
+  translationSpeed: 120
   rotationSpeed: 3
 --- !u!212 &212193482483151324
 SpriteRenderer:
