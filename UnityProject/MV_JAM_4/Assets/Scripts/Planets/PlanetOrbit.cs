@@ -14,67 +14,28 @@ public class PlanetOrbit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        TrailRenderer rend = GetComponent<TrailRenderer>();
-        rend.enabled = false;
-        transform.position = (transform.position - center.position).normalized * radius + center.position;
-        rend.enabled = true;
+        SetPosition(transform.position);
     }
-
-    // 卐
-
-    //        _
-    //       / /\
-    //      / / /
-    //     / / /   _
-    //    /_/ /   / /\
-    //    \ \ \  / /  \
-    //     \ \ \/ / /\ \
-    //  _   \ \ \/ /\ \ \
-    ///_/\   \_\  /  \ \ \
-    //\ \ \  / /  \   \_\/   HEIL HASTRO! o/
-    // \ \ \/ / /\ \ 
-    //  \ \ \/ /\ \ \
-    //   \ \  /  \ \ \
-    //    \_\/   / / /
-    //          / / /
-    //         /_/ /
-    //         \_\/
-//####_______###############
-//####_______###############
-//####_______####___________
-//####_______####___________
-//##########################
-//##########################
-//___________####_______####
-//___________####_______####
-//###############_______####
-//###############_______####
-
-
-//░░░░░░░░░░░░░░░▄▀▄░░░░░░░░░░░░░░░
-//░░░░░░░░░░░░░▄▀░░░▀▄░░░░░░░░░░░░░
-//░░░░░░░░░░░▄▀░░░░▄▀█░░░░░░░░░░░░░
-//░░░░░░░░░▄▀░░░░▄▀░▄▀░▄▀▄░░░░░░░░░
-//░░░░░░░▄▀░░░░▄▀░▄▀░▄▀░░░▀▄░░░░░░░
-//░░░░░░░█▀▄░░░░▀█░▄▀░░░░░░░▀▄░░░░░
-//░░░▄▀▄░▀▄░▀▄░░░░▀░░░░▄█▄░░░░▀▄░░░
-//░▄▀░░░▀▄░▀▄░▀▄░░░░░▄▀░█░▀▄░░░░▀▄░
-//░█▀▄░░░░▀▄░█▀░░░░░░░▀█░▀▄░▀▄░▄▀█░
-//░▀▄░▀▄░░░░▀░░░░▄█▄░░░░▀▄░▀▄░█░▄▀░
-//░░░▀▄░▀▄░░░░░▄▀░█░▀▄░░░░▀▄░▀█▀░░░
-//░░░░░▀▄░▀▄░▄▀░▄▀░█▀░░░░▄▀█░░░░░░░
-//░░░░░░░▀▄░█░▄▀░▄▀░░░░▄▀░▄▀░░░░░░░
-//░░░░░░░░░▀█▀░▄▀░░░░▄▀░▄▀░░░░░░░░░
-//░░░░░░░░░░░░░█▀▄░▄▀░▄▀░░░░░░░░░░░
-//░░░░░░░░░░░░░▀▄░█░▄▀░░░░░░░░░░░░░
-//░░░░░░░░░░░░░░░▀█▀░░░░░░░░░░░░░░░ 
 
     // Update is called once per frame
     void Update () {
-        // Aikon me cago en tus muertos xDDDDDDDD
+        RotateAndTranslate();
+    }
+
+    void RotateAndTranslate()
+    {
         transform.Rotate(new Vector3(0f, 0f, 5f), transform.position.x * rotationSpeed * .9f);
         transform.RotateAround(center.position, axis, translationSpeed * Time.deltaTime);
         Vector3 destination = (transform.position - center.position).normalized * radius + center.position;
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * radiusSpeed);
+    }
+
+    // Disable trail renderer temporarily so it doesn't show the trail in between positions
+    public void SetPosition(Vector3 pos)
+    {
+        TrailRenderer rend = GetComponent<TrailRenderer>();
+        rend.enabled = false;
+        transform.position = (pos - center.position).normalized * radius + center.position;
+        rend.enabled = true;
     }
 }

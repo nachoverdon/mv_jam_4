@@ -13,6 +13,7 @@ public class SpriteColorChanger : MonoBehaviour {
     // Use this for initialization
     void Start() {
         spr = GetComponent<SpriteRenderer>();
+        hue = Random.value;
     }
 
     // Update is called once per frame

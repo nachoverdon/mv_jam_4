@@ -13,6 +13,7 @@ public class TrailColorChanger : MonoBehaviour {
     // Use this for initialization
     void Start() {
         trail = GetComponent<TrailRenderer>();
+        hue = Random.value;
     }
 
     // Update is called once per frame
