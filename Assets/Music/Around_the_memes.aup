@@ -1,0 +1,39 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="Around_the_memes_data" version="1.3.0" audacityversion="2.3.0" sel0="7.8848995141" sel1="7.9853258179" vpos="0" h="0.0324233495" zoom="6970.2854046243" rate="44100.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="ARTIST" value="bazoo"/>
+		<tag name="TITLE" value="Around the memes"/>
+		<tag name="COMMENTS" value="// Heil Jastro"/>
+		<tag name="ALBUM" value="MV JAM 4"/>
+		<tag name="YEAR" value="1337"/>
+		<tag name="TRACKNUMBER" value="Arnold is #1"/>
+		<tag name="GENRE" value="Varón"/>
+	</tags>
+	<wavetrack name="Around_the_memes" channel="0" linked="1" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="351558">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808596.au" len="259398" min="-0.449951" max="0.496704" rms="0.111574"/>
+				</waveblock>
+				<waveblock start="259398">
+					<simpleblockfile filename="e0808e69.au" len="92160" min="-0.44986" max="0.496704" rms="0.089089"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Around_the_memes" channel="1" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="351558">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808490.au" len="259398" min="-0.449951" max="0.496704" rms="0.111574"/>
+				</waveblock>
+				<waveblock start="259398">
+					<simpleblockfile filename="e080809f.au" len="92160" min="-0.44986" max="0.496704" rms="0.089089"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>

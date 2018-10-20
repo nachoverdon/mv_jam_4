@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public float leanAngleHorizontal;
     public float leanAngleVertical;
     public float speed = 0.2f;
+    public Vector2 bounds = new Vector2(9.215f, 4.76f);
 
     // Use this for initialization
     void Start () {
@@ -41,7 +42,28 @@ public class PlayerMovement : MonoBehaviour {
         x += speed * horiRaw;
 
         // Check bound collisions
-        PlayerCollisions playerCol = GetComponent<PlayerCollisions>();
-        transform.position = playerCol.CheckBoundsCollision(new Vector3(x, y, pos.z));
+        pos = new Vector3(x, y, pos.z);
+
+        // X axis
+        if (pos.x <= -bounds.x)
+        {
+            pos = new Vector3(-bounds.x, pos.y, pos.z);
+        }
+        else if (pos.x >= bounds.x)
+        {
+            pos = new Vector3(bounds.x, pos.y, pos.z);
+        }
+
+        // Y axis
+        if (pos.y <= -bounds.y)
+        {
+            pos = new Vector3(pos.x, -bounds.y, pos.z);
+        }
+        else if (pos.y >= bounds.y)
+        {
+            pos = new Vector3(pos.x, bounds.y, pos.z);
+        }
+
+        transform.position =  pos;
     }
 }

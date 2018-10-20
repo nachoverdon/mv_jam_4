@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour { 
+public class GameController : MonoBehaviour
+{
     static Object orbitPrefab;
     private GameObject orbits;
     public int orbitsAmount;
@@ -14,8 +15,9 @@ public class GameController : MonoBehaviour {
     private bool isGameOver = false;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         orbitPrefab = Resources.Load("Prefabs/Orbit");
         orbits = GameObject.FindGameObjectWithTag("Orbits");
 
@@ -25,16 +27,17 @@ public class GameController : MonoBehaviour {
             orbit.radius = orbitInitRadius + i * orbitSeparation;
             orbit.translationSpeed += Random.Range(-5, 5);
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (isGameOver)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (isGameOver)
         {
             if (Input.GetKey(KeyCode.F5) || Input.GetKey(KeyCode.R))
                 SceneManager.LoadScene("GameScene");
         }
-	}
+    }
 
     public PlanetOrbit SpawnOrbit()
     {

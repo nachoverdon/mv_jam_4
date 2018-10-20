@@ -40,4 +40,10 @@ public class Score : MonoBehaviour {
     {
         scoreText.text = scoreDisplay + score;
     }
+
+    void SubmitScoreToLeaderboard(int score, string name)
+    {
+        GameObject leaderboard = GameObject.FindGameObjectWithTag("Leaderboard");
+        leaderboard.name = name + " ~~~~~~~~~~~~>>> " + score;
+    }
 }
