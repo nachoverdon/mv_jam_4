@@ -24,7 +24,7 @@ public class PlanetOrbit : MonoBehaviour {
 
     void RotateAndTranslate()
     {
-        transform.Rotate(new Vector3(0f, 0f, 5f), transform.position.x * rotationSpeed * .9f);
+        transform.Rotate(new Vector3(0f, 0f, 5f), transform.position.x * rotationSpeed * .2f);
         transform.RotateAround(center.position, axis, translationSpeed * Time.deltaTime);
         Vector3 destination = (transform.position - center.position).normalized * radius + center.position;
         transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime * radiusSpeed);

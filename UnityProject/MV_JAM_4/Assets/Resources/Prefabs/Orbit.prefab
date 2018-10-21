@@ -36,12 +36,13 @@ GameObject:
   - component: {fileID: 4183767970862216}
   - component: {fileID: 212193482483151324}
   - component: {fileID: 114811192721387030}
+  - component: {fileID: 114265336666541432}
   - component: {fileID: 58330992530173358}
   - component: {fileID: 96959580468189214}
   - component: {fileID: 114686390583824664}
   - component: {fileID: 114727872545293406}
-  - component: {fileID: 114265336666541432}
   - component: {fileID: 114527710016290036}
+  - component: {fileID: 114975157448113814}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -57,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1269362278039898}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10, y: 6, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4760558349007416}
   m_RootOrder: 0
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a25c2fbaa3c974685ff104c0b143c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkSpeed: 0.0035
+  shrinkSpeed: 0.005
 --- !u!114 &114527710016290036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hue: 0
-  saturation: 0.5
+  saturation: 0.1
   value: 1
 --- !u!114 &114727872545293406
 MonoBehaviour:
@@ -257,9 +258,20 @@ MonoBehaviour:
   center: {fileID: 4760558349007416}
   axis: {x: 0, y: 0, z: 1}
   radius: 11
-  radiusSpeed: 10
-  translationSpeed: 120
-  rotationSpeed: 3
+  radiusSpeed: 20
+  translationSpeed: 100
+  rotationSpeed: 1
+--- !u!114 &114975157448113814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269362278039898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b4b64cbb3de7f468d10e027ec7e3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212193482483151324
 SpriteRenderer:
   m_ObjectHideFlags: 1
