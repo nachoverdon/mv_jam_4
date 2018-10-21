@@ -68,10 +68,11 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        GameObject deathTextGO = GameObject.FindGameObjectWithTag("Canvas").transform.Find("DeathText").gameObject;
+        GameObject deathTextGO = GameObject.Find("DeathText");
         if (deathTextGO != null)
         {
-            deathTextGO.SetActive(true);
+            //deathTextGO.SetActive(true);
+            deathTextGO.transform.position = new Vector3(0, 0, 0);
             isGameOver = true;
         }
         gameOverSound.Play();

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public string scoreDisplay;
     private Text scoreText;
     private int score = 0;
 
@@ -38,7 +37,7 @@ public class Score : MonoBehaviour {
 
     void SetText()
     {
-        scoreText.text = scoreDisplay + score;
+        scoreText.text = "" + score;
     }
 
     void SubmitScoreToLeaderboard(int score, string name)
