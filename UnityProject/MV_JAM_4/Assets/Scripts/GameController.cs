@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
 {
     static Object orbitPrefab;
     private GameObject orbits;
+    public AudioSource gameOverSound;
     public int orbitsAmount;
     public float orbitInitRadius;
     public float orbitSeparation;
@@ -18,6 +19,7 @@ public class GameController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameOverSound = GetComponent<AudioSource>();
         orbitPrefab = Resources.Load("Prefabs/Orbit");
         orbits = GameObject.FindGameObjectWithTag("Orbits");
 
@@ -72,7 +74,7 @@ public class GameController : MonoBehaviour
             deathTextGO.SetActive(true);
             isGameOver = true;
         }
-        // Game over
+        gameOverSound.Play();
         // Stop score count
     }
 }

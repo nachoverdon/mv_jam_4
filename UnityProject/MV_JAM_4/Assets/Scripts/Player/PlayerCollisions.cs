@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour {
 
+    public AudioSource sfx;
+    public AudioClip[] deathSounds;
+
     // Use this for initialization
     void Start () {
-	}
+        //sfx = GetComponent<AudioSource>();
+        deathSounds = Resources.LoadAll<AudioClip>("Audio/SFX/deathscreams");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -15,10 +20,12 @@ public class PlayerCollisions : MonoBehaviour {
 
     void Kill()
     {
-        // Make sound
+        if (sfx != null)
+        {
+            sfx.clip = deathSounds[Mathf.FloorToInt(Random.value * deathSounds.Length)];
+            sfx.Play();
+        }
         Destroy(gameObject);
-        //GameController controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        //controller
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().GameOver();;
     }
 

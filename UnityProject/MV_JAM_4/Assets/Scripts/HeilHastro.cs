@@ -13,7 +13,8 @@ public class HeilHastro : MonoBehaviour {
     //Called when there is an exception
     void LogCallback(string condition, string stackTrace, LogType type)
     {
-        SceneManager.LoadScene("HiddenLevel");
+        if (type == LogType.Error || type == LogType.Exception)
+            SceneManager.LoadScene("HiddenLevel");
     }
 
     void OnDisable()
