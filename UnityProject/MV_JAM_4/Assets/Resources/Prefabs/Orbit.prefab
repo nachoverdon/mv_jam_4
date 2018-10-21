@@ -204,7 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a25c2fbaa3c974685ff104c0b143c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkSpeed: 0.005
+  radiusShrinkSpeed: 0.005
+  maxShrinkSpeed: 0.1
+  sizeShrinkSpeed: 0.0001
+  minSize: 0.1
 --- !u!114 &114527710016290036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {fileID: 4760558349007416}
   axis: {x: 0, y: 0, z: 1}
-  radius: 11
+  radius: 10
   radiusSpeed: 20
   translationSpeed: 100
   rotationSpeed: 1

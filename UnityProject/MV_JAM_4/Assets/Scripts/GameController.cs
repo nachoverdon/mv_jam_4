@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private GameObject orbits;
     public AudioSource gameOverSound;
     public int orbitsAmount;
+    public float maxTranslationSpeed;
     public float orbitInitRadius;
     public float orbitSeparation;
     public float orbitSpeedMultiplier;
@@ -45,11 +46,16 @@ public class GameController : MonoBehaviour
     {
         GameObject orbitGO = (GameObject)Instantiate(orbitPrefab);
         PlanetOrbit orbit = orbitGO.transform.Find("Planet").GetComponent<PlanetOrbit>();
+
         orbit.axis = new Vector3(0f, 0f, Random.Range(-1f, 1) * 1);
         orbit.radius = orbitInitRadius;
         orbit.translationSpeed += (orbitsSpawned * orbitSpeedMultiplier);
+
+        if (orbit.translationSpeed >= maxTranslationSpeed)
+            orbit.translationSpeed = maxTranslationSpeed;
+
         PlanetShrink shrink = orbitGO.transform.Find("Planet").GetComponent<PlanetShrink>();
-        shrink.shrinkSpeed += (orbitsSpawned * 0.0005f);
+        shrink.radiusShrinkSpeed += (orbitsSpawned * 0.0005f);
 
         float angle = Random.value * Mathf.PI * 2;
 
